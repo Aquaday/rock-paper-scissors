@@ -7,7 +7,6 @@ const displayResults = document.querySelector("#results")
 const choices = ["rock", "paper", "scissors"]
 let yourChoice = ""
 
-
 function computerChoose() { 
     let computerChoice = choices[Math.floor(Math.random() * 3)]
     computerChoiceElement.innerHTML = computerChoice
@@ -23,30 +22,7 @@ function computerChoose() {
     } else {
         displayResults.innerHTML = "You lose!"
     }
-
-    // if (computerChoice === yourChoice) {
-    //     displayResults.innerHTML = "Its a draw!"
-    // } else if (computerChoice === "rock") {
-    //     if (yourChoice === "paper") {
-    //         displayResults.innerHTML = "You win!"
-    //     } else {
-    //         displayResults.innerHTML = "You lose!"
-    //     }
-    // } else if (computerChoice === "paper") {
-    //     if (yourChoice === "rock") {
-    //         displayResults.innerHTML = "You lose!"
-    //     } else {
-    //         displayResults.innerHTML = "You win!"
-    //     }
-    // } else {
-    //     if (yourChoice === "paper") {
-    //         displayResults.innerHTML = "You lose!"
-    //     } else {
-    //         displayResults.innerHTML = "You win!"
-    //     }
-    // } 
 }
-
 
 rockButton.addEventListener("click", selectRock)
 function selectRock() {
