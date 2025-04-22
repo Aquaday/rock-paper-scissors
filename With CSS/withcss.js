@@ -6,6 +6,60 @@ const yourChoiceElement = document.querySelector("#yourChoice")
 const displayResults = document.querySelector("#results")
 const choices = ["rock", "paper", "scissors"]
 let yourChoice = ""
+let played = false
+
+
+rockButton.addEventListener("click", selectRock)
+function selectRock() {
+    if ((yourChoice === "paper" || yourChoice === "scissors") && played === true) {
+    document.querySelector(".activeButton").classList.remove("activeButton")
+    } else if {}
+    paperButton.classList.add("activeButton")
+    yourChoice = "rock"
+    computerChoose()
+}
+
+paperButton.addEventListener("click", selectPaper)
+function selectPaper() {
+    if ((yourChoice === "rock" || yourChoice === "scissors") && played === true) {
+    document.querySelector(".activeButton").classList.remove("activeButton")
+    } 
+    paperButton.classList.add("activeButton")
+    yourChoice = "paper"
+    computerChoose()
+}
+
+
+
+scissorsButton.addEventListener("click", selectScissors)
+function selectScissors() {
+    if ((yourChoice === "rock" || yourChoice === "paper") && played === true) {
+    document.querySelector(".activeButton").classList.remove("activeButton")
+    } 
+    paperButton.classList.add("activeButton")
+    yourChoice = "scissors"
+    computerChoose()
+}
+
+// paperButton.addEventListener("click", selectPaper)
+// function selectPaper() {
+//     let checkActive = document.querySelector(".activeButton")
+//     if (checkActive.classList.contains(activeButton) === true){
+//         checkActive.classList.remove(activeButton)
+//     }else {
+//     paperButton.classList.add("activeButton")
+//     yourChoice = "paper"
+//     computerChoose()
+// }
+    
+// }
+
+// scissorsButton.addEventListener("click", selectScissors)
+// function selectScissors() {
+//     scissorsButton.classList.add("activeButton")
+//     yourChoice = "scissors"
+//     computerChoose()
+// }
 
 function computerChoose() { 
     let computerChoice = choices[Math.floor(Math.random() * 3)]
@@ -22,22 +76,5 @@ function computerChoose() {
     } else {
         displayResults.innerHTML = "You lose!"
     }
-}
-
-rockButton.addEventListener("click", selectRock)
-function selectRock() {
-    yourChoice = "rock"
-    computerChoose()
-}
-
-paperButton.addEventListener("click", selectPaper)
-function selectPaper() {
-    yourChoice = "paper"
-    computerChoose()
-}
-
-scissorsButton.addEventListener("click", selectScissors)
-function selectScissors() {
-    yourChoice = "scissors"
-    computerChoose()
+    played = true
 }
