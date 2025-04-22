@@ -1,11 +1,30 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h2 {
+    background-color: lightgreen;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
 .gameSection {
-    height: 500px;
+    min-height: 500px;
+}
+
+.gameSection .container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    padding: 30px;
+}
+
+.gameSection h1 {
+    margin-bottom: 0px;
 }
 
 #results, #yourChoice, #computerChoice {
@@ -17,19 +36,56 @@
     line-height: 30px;
 }
 
+#computerChoice, #results {
+    padding: 50px;
+    font-size: 20px;
+    width: 100%;
+    min-height: 30px;
+    border: none;
+    text-align: center;
+    margin: 0;
+}
+
 .buttons {
-    scale: 1;
-    gap: 20px;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 100%;
 }
 
 .buttons button {
-    padding: 10px;
-    border-radius: 10px;
-    min-width: 100px;
+    padding: 50px;
+    font-size: 20px;
+    width: 35%;
     min-height: 30px;
+    border: none;
+}
+
+.rockStyle {
+    background-color: gray;
+}
+
+.paperStyle {
+    background-color: lightblue;
+}
+
+.scissorsStyle{
+    background-color: coral;
 }
 
 .activeButton {
-    background-color: orange;
+    background-color: green;
+}
+
+.won {
+    background-color: green;
+}
+
+.draw {
+    background-color: yellow;
+}
+
+.lose {
+    background-color: red;
 }

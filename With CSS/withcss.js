@@ -2,7 +2,6 @@ const rockButton = document.querySelector("#rock")
 const paperButton = document.querySelector("#paper")
 const scissorsButton = document.querySelector("#scissors")
 const computerChoiceElement = document.querySelector("#computerChoice")
-const yourChoiceElement = document.querySelector("#yourChoice")
 const displayResults = document.querySelector("#results")
 const choices = ["rock", "paper", "scissors"]
 let yourChoice = ""
@@ -11,18 +10,21 @@ let played = false
 
 rockButton.addEventListener("click", selectRock)
 function selectRock() {
-    if ((yourChoice === "paper" || yourChoice === "scissors") && played === true) {
-    document.querySelector(".activeButton").classList.remove("activeButton")
-    } else if {}
-    paperButton.classList.add("activeButton")
+    if (played === true) {
+        paperButton.setAttribute('class', 'paperStyle')
+        scissorsButton.setAttribute('class', 'scissorsStyle')
+    } 
+    rockButton.classList.add("activeButton")
     yourChoice = "rock"
     computerChoose()
+    
 }
 
 paperButton.addEventListener("click", selectPaper)
 function selectPaper() {
-    if ((yourChoice === "rock" || yourChoice === "scissors") && played === true) {
-    document.querySelector(".activeButton").classList.remove("activeButton")
+    if (played === true) {
+        rockButton.setAttribute('class', 'rockStyle')
+        scissorsButton.setAttribute('class', 'scissorsStyle')
     } 
     paperButton.classList.add("activeButton")
     yourChoice = "paper"
@@ -33,10 +35,11 @@ function selectPaper() {
 
 scissorsButton.addEventListener("click", selectScissors)
 function selectScissors() {
-    if ((yourChoice === "rock" || yourChoice === "paper") && played === true) {
-    document.querySelector(".activeButton").classList.remove("activeButton")
+    if (played === true) {
+        paperButton.setAttribute('class', 'paperStyle')
+        rockButton.setAttribute('class', 'rockStyle')
     } 
-    paperButton.classList.add("activeButton")
+    scissorsButton.classList.add("activeButton")
     yourChoice = "scissors"
     computerChoose()
 }
@@ -62,19 +65,42 @@ function selectScissors() {
 // }
 
 function computerChoose() { 
+    computerChoiceElement.innerHTML = ""
+    displayResults.innerHTML = ""
     let computerChoice = choices[Math.floor(Math.random() * 3)]
-    computerChoiceElement.innerHTML = computerChoice
-    yourChoiceElement.innerHTML = yourChoice
 
-    if (computerChoice === yourChoice) {
-        displayResults.innerHTML = "Its a draw!"
-    } else if (
-        (computerChoice === "rock" && yourChoice === "paper") || 
-        (computerChoice === "paper" && yourChoice === "scissors") || 
-        (computerChoice === "scissors" && yourChoice === "rock")) {
-        displayResults.innerHTML = "You win!"
-    } else {
-        displayResults.innerHTML = "You lose!"
-    }
+    if (played === true) {
+        displayResults.setAttribute("class", "")
+        computerChoiceElement.setAttribute("class", "")
+        } 
+    setTimeout( () => {
+        computerChoiceElement.innerHTML = computerChoice
+        if (computerChoice === "rock") {
+            computerChoiceElement.classList.add("rockStyle")
+            
+        } else if (computerChoice === "paper") {
+            computerChoiceElement.classList.add("paperStyle")
+            
+        } else if (computerChoice === "scissors") {
+            computerChoiceElement.classList.add("scissorsStyle")
+        }}, 1000)
+    
+    
+
+        setTimeout( () => {
+            if (computerChoice === yourChoice) {
+            displayResults.innerHTML = "Its a draw!"
+            displayResults.classList.add("draw")
+        } else if (
+            (computerChoice === "rock" && yourChoice === "paper") || 
+            (computerChoice === "paper" && yourChoice === "scissors") || 
+            (computerChoice === "scissors" && yourChoice === "rock")) {
+            displayResults.innerHTML = "You win!"
+            displayResults.classList.add("won")
+        } else {
+            displayResults.innerHTML = "You lose!"
+            displayResults.classList.add("lose")
+        }}, 2000)
+    
     played = true
 }
