@@ -12,8 +12,36 @@ let fireImage = document.createElement("img")
 const yourChoiceArea = document.querySelector(".yourChoice")
 const computerChoiceArea = document.querySelector(".computerChoice")
 
-rockButton.addEventListener("click", selectRock)
+let totalCounterEl = document.querySelector("#totalCounter")
+let winCounterEl = document.querySelector("#winCounter")
+let drawCounterEl = document.querySelector("#drawCounter")
+let lossCounterEl = document.querySelector("#lossCounter")
 
+let totalCounter = 0
+let winCounter = 0
+let drawCounter = 0
+let lossCounter = 0
+
+function getHistory() {
+    if (localStorage.getItem("Wins") !== null) {
+
+        totalCounter = localStorage.getItem("Total");
+        winCounter = localStorage.getItem("Wins");
+        drawCounter = localStorage.getItem("Draws");
+        lossCounter = localStorage.getItem("Losses");
+
+        console.log(lossCounter)
+
+        totalCounterEl.innerHTML = totalCounter
+        winCounterEl.innerHTML = winCounter
+        drawCounterEl.innerHTML = drawCounter
+        lossCounterEl.innerHTML = lossCounter
+    }
+}
+
+getHistory()
+
+rockButton.addEventListener("click", selectRock)
 function selectRock() {
     if (played === false) {
 
@@ -67,6 +95,7 @@ function computerChoose() {
         setTimeout( () => {
             if (computerChoice === yourChoice) {
                 // If draw, do nothing
+                drawCounter += 1
 
             } else if (
                 // if win, add fireImage to computerChoiceArea
@@ -74,14 +103,28 @@ function computerChoose() {
                 (computerChoice === "paper" && yourChoice === "scissors") || 
                 (computerChoice === "scissors" && yourChoice === "rock")) {
                 computerChoiceArea.appendChild(fireImage)
+                winCounter += 1
                 
 
             } else {
                 // if loss, add fireImage to yourChoiceArea if loss
                 yourChoiceArea.appendChild(fireImage)
+                lossCounter += 1
 
 
             }
+            totalCounter = winCounter - lossCounter
+            totalCounterEl.innerHTML = totalCounter
+            winCounterEl.innerHTML = winCounter
+            drawCounterEl.innerHTML = drawCounter
+            lossCounterEl.innerHTML = lossCounter
+            localStorage.setItem("Total", totalCounter );
+            localStorage.setItem("Wins", winCounter );
+            localStorage.setItem("Draws", drawCounter );
+            localStorage.setItem("Losses", lossCounter );
+
+
+
             // Rests classes to start
             setTimeout( () => {
                 rockButton.setAttribute('class', '')
@@ -95,6 +138,9 @@ function computerChoose() {
                 played = false
             },  1000)
         }, 2500)
-    
+        
+
+        
+        
     
 }

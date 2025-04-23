@@ -2,6 +2,15 @@ body {
     margin: 0;
 }
 
+.pageHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    height: 5vh;
+}
+
 h2 {
     background-color: lightgreen;
     margin: 0;
@@ -15,7 +24,7 @@ h2 {
     align-items: center;
     flex-direction: column;
     margin: 0% 20%;
-    height: 85vh;
+    height: 80vh;
 }
 
 .gameDiv {
@@ -154,6 +163,23 @@ h2 {
     background-color: red;
 }
 
+.historySection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+table {
+    width: 200px;
+    border-spacing: 10px;
+}
+
+td {
+    width: 50px;
+    text-align: center;
+    border: 2px solid black;
+}
 
 footer {
     background-color: blue;
