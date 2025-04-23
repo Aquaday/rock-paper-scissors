@@ -1,43 +1,29 @@
 body {
     margin: 0;
-    box-sizing: border-box;
 }
 
 h2 {
     background-color: lightgreen;
-    width: 100%;
     margin: 0;
-    padding: 20px;
+    padding: 20px 0px;
     text-align: center;
 }
 
 .gameSection {
-    min-height: 500px;
-}
-
-.gameSection .container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+    flex-direction: column;
+    margin: 0% 20%;
+    height: 85vh;
 }
 
-.gameSection h1 {
-    margin-bottom: 0px;
-}
-
-#results, #yourChoice, #computerChoice {
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 5px;
-    height: 30px;
-    width: 120px;
-    line-height: 30px;
+.gameDiv {
+    border: 5px solid lightgreen;
 }
 
 #computerChoice, #results {
-    padding: 50px;
+    padding: 50px 0px;
     font-size: 20px;
     width: 100%;
     min-height: 30px;
@@ -88,4 +74,30 @@ h2 {
 
 .lose {
     background-color: red;
+}
+
+
+footer {
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 15vh;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer ul {
+    list-style:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
