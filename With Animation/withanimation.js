@@ -7,49 +7,29 @@ const computerScissorsButton = document.querySelector("#computerScissors")
 const choices = ["rock", "paper", "scissors"]
 let yourChoice = ""
 let played = false
-let selected = false
-let createImage = document.createElement("img")
-    createImage.src = "/With Animation/images/fire.png"
+let fireImage = document.createElement("img")
+    fireImage.src = "/With Animation/images/fire.png"
 const yourChoiceArea = document.querySelector(".yourChoice")
 const computerChoiceArea = document.querySelector(".computerChoice")
 
 rockButton.addEventListener("click", selectRock)
 
 function selectRock() {
-    if (selected === false) {
-        if (played === true) {
-            rockButton.setAttribute('class', '')
-            paperButton.setAttribute('class', '')
-            scissorsButton.setAttribute('class', '')
-            computerRockButton.setAttribute('class', '')
-            computerPaperButton.setAttribute('class', '')
-            computerScissorsButton.setAttribute('class', '')
-    } 
+    if (played === false) {
+
     rockButton.setAttribute('class', 'rock')
     setTimeout ( () => {rockButton.classList.add("rockAttack")}, 2000)
     yourChoice = "rock"
-    selected = true
-    
-     
     computerChoose()
 }
 }
 
 paperButton.addEventListener("click", selectPaper)
 function selectPaper() {
-    if (selected === false) {
-        if (played === true) {
-            rockButton.setAttribute('class', '')
-            paperButton.setAttribute('class', '')
-            scissorsButton.setAttribute('class', '')
-            computerRockButton.setAttribute('class', '')
-            computerPaperButton.setAttribute('class', '')
-            computerScissorsButton.setAttribute('class', '')
-    } 
+    if (played === false) {
     paperButton.setAttribute('class', 'paper')
     setTimeout ( () => {paperButton.classList.add("paperAttack")}, 2000)
     yourChoice = "paper"
-    selected = true
     computerChoose()
 }
 }
@@ -58,26 +38,16 @@ function selectPaper() {
 
 scissorsButton.addEventListener("click", selectScissors)
 function selectScissors() {
-    if (selected === false) {
-    if (played === true) {
-        rockButton.setAttribute('class', '')
-        paperButton.setAttribute('class', '')
-        scissorsButton.setAttribute('class', '')
-        computerRockButton.setAttribute('class', '')
-        computerPaperButton.setAttribute('class', '')
-        computerScissorsButton.setAttribute('class', '')
-    } 
+    if (played === false) {
     scissorsButton.setAttribute('class', 'scissors')
     setTimeout ( () => {scissorsButton.classList.add("scissorsAttack")}, 2000)
     yourChoice = "scissors"
-    selected = true
     computerChoose()
 }
 }
 
 function computerChoose() { 
-    computerChoiceArea.innerHTML = ""
-    yourChoiceArea.innerHTML = ""
+    played = true
     let computerChoice = choices[Math.floor(Math.random() * 3)]
 
     setTimeout( () => {
@@ -96,20 +66,35 @@ function computerChoose() {
 
         setTimeout( () => {
             if (computerChoice === yourChoice) {
+                // If draw, do nothing
 
-        } else if (
-            (computerChoice === "rock" && yourChoice === "paper") || 
-            (computerChoice === "paper" && yourChoice === "scissors") || 
-            (computerChoice === "scissors" && yourChoice === "rock")) {
-            computerChoiceArea.appendChild(createImage)
-            
+            } else if (
+                // if win, add fireImage to computerChoiceArea
+                (computerChoice === "rock" && yourChoice === "paper") || 
+                (computerChoice === "paper" && yourChoice === "scissors") || 
+                (computerChoice === "scissors" && yourChoice === "rock")) {
+                computerChoiceArea.appendChild(fireImage)
+                
 
-        } else {
-            yourChoiceArea.appendChild(createImage)
+            } else {
+                // if loss, add fireImage to yourChoiceArea if loss
+                yourChoiceArea.appendChild(fireImage)
 
 
-        }}, 2500)
+            }
+            // Rests classes to start
+            setTimeout( () => {
+                rockButton.setAttribute('class', '')
+                paperButton.setAttribute('class', '')
+                scissorsButton.setAttribute('class', '')
+                computerRockButton.setAttribute('class', '')
+                computerPaperButton.setAttribute('class', '')
+                computerScissorsButton.setAttribute('class', '')
+                computerChoiceArea.innerHTML = ""
+                yourChoiceArea.innerHTML = ""
+                played = false
+            },  1000)
+        }, 2500)
     
-    played = true
-    selected = false
+    
 }

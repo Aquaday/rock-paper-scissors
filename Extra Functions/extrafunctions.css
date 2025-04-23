@@ -1,0 +1,320 @@
+body {
+    margin: 0;
+}
+
+h2 {
+    background-color: lightgreen;
+    margin: 0;
+    padding: 20px 0px;
+    text-align: center;
+}
+
+.gameSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0% 20%;
+    height: 85vh;
+}
+
+.gameDiv {
+    border: 5px solid lightgreen;
+}
+
+
+.fightArea, .yourChoice, .computerChoice {
+    width: 460px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+}
+
+.yourChoicesImg, .computerChoicesImg  {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.yourChoicesImg img, .computerChoicesImg img  {
+    height: 100px;
+    margin: 20px;
+    z-index: 5;
+}
+
+.yourChoice img, .computerChoice img {
+    height: 100px;
+    margin: 20px;
+    z-index: 10;
+}
+
+
+
+.rock {
+    animation-name: rock;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transform: translateX(0px);
+    transform: translateY(0px);
+}
+
+.rockAttack {
+    animation-name: rockAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.paper {
+    animation-name: paper;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.paperAttack {
+    animation-name: paperAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.scissors {
+    animation-name: scissors;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.scissorsAttack {
+    animation-name: scissorsAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.computerRock {
+    animation-name: computerRock;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.computerRockAttack {
+    animation-name: computerRockAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.computerPaper {
+    animation-name: computerPaper;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.computerPaperAttack {
+    animation-name: computerPaperAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.computerScissors {
+    animation-name: computerScissors;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.computerScissorsAttack {
+    animation-name: computerScissorsAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.won {
+    background-color: green;
+}
+
+.draw {
+    background-color: yellow;
+}
+
+.lose {
+    background-color: red;
+}
+
+
+footer {
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 15vh;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer ul {
+    list-style:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes rock {
+    0% {
+        transform: translate(0,0)
+      }
+
+      100% {
+        transform: translate(160px, 140px);
+   }
+}
+    @keyframes rockAttack {
+        0% {
+            transform: translate(160px,140px)
+        }
+
+        50% {
+            transform: translate(160px, 280px);
+        }
+
+        100% {
+            transform: translate(160px,140px)
+        }
+
+    }
+
+@keyframes paper {
+    from {
+        transform: translatey(0px);
+    }
+    to {
+        transform: translatey(140px);
+    }
+    }
+
+    @keyframes paperAttack {
+        0% {
+            transform: translatey(140px);
+        }
+        50% {
+            transform: translatey(280px);
+        }
+        100% {
+            transform: translatey(140px);
+        }
+        }
+
+@keyframes scissors {
+    0% {
+        transform: translate(0,0)
+      }
+
+    100% {
+        transform: translate(-160px, 140px);
+   }
+}
+    @keyframes scissorsAttack {
+        0% {
+            transform: translate(-160px, 140px);
+        }
+
+        50% {
+            transform: translate(-160px, 280px);
+        }
+        100% {
+            transform: translate(-160px, 140px);
+        }
+    }   
+
+
+
+
+@keyframes computerRock {
+    0% {
+        transform: translate(0,0)
+      }
+    100% {
+        transform: translate(160px, -140px);
+   }
+}
+@keyframes computerRockAttack {
+    0% {
+        transform: translate(160px, -140px);
+      }
+    50% {
+        transform: translate(160px, -280px);
+   }
+    100% {
+        transform: translate(160px, -140px);
+    }
+}
+
+
+@keyframes computerPaper {
+    from {
+        transform: translatey(0px);
+        }
+    to {
+        transform: translatey(-140px);
+    }
+    }
+    @keyframes computerPaperAttack {
+        0% {
+            transform: translatey(-140px);
+            }
+        50% {
+            transform: translatey(-280px);
+        }
+        100% {
+            transform: translatey(-140px);
+            }
+        }
+
+@keyframes computerScissors {
+    0% {
+        transform: translate(0,0)
+      }
+    100% {
+        transform: translate(-160px, -140px);
+   }
+}
+    @keyframes computerScissorsAttack {
+        0% {
+            transform: translate(-160px, -140px);
+        }
+
+        50% {
+            transform: translate(-160px, -280px);
+    }
+    100% {
+        transform: translate(-160px, -140px);
+    }
+}   
+
+
+
+
+
+
+
