@@ -26,6 +26,8 @@ h2 {
 .fightArea, .yourChoice, .computerChoice {
     width: 460px;
     height: 140px;
+    display: flex;
+    justify-content: center;
 }
 
 .yourChoicesImg, .computerChoicesImg  {
@@ -37,7 +39,16 @@ h2 {
 .yourChoicesImg img, .computerChoicesImg img  {
     height: 100px;
     margin: 20px;
+    z-index: 5;
 }
+
+.yourChoice img, .computerChoice img {
+    height: 100px;
+    margin: 20px;
+    z-index: 10;
+}
+
+
 
 .rock {
     animation-name: rock;
@@ -49,10 +60,24 @@ h2 {
     transform: translateY(0px);
 }
 
+.rockAttack {
+    animation-name: rockAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
 .paper {
     animation-name: paper;
     animation-duration: 500ms;
     animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.paperAttack {
+    animation-name: paperAttack;
+    animation-duration: 500ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -65,10 +90,24 @@ h2 {
     animation-fill-mode: forwards;
 }
 
+.scissorsAttack {
+    animation-name: scissorsAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
 .computerRock {
     animation-name: computerRock;
     animation-duration: 500ms;
     animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.computerRockAttack {
+    animation-name: computerRockAttack;
+    animation-duration: 500ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -81,6 +120,13 @@ h2 {
     animation-fill-mode: forwards;
 }
 
+.computerPaperAttack {
+    animation-name: computerPaperAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
 .computerScissors {
     animation-name: computerScissors;
     animation-duration: 500ms;
@@ -89,6 +135,12 @@ h2 {
     animation-fill-mode: forwards;
 }
 
+.computerScissorsAttack {
+    animation-name: computerScissorsAttack;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
 
 .won {
     background-color: green;
@@ -137,6 +189,20 @@ footer ul {
         transform: translate(160px, 140px);
    }
 }
+    @keyframes rockAttack {
+        0% {
+            transform: translate(160px,140px)
+        }
+
+        50% {
+            transform: translate(160px, 280px);
+        }
+
+        100% {
+            transform: translate(160px,140px)
+        }
+
+    }
 
 @keyframes paper {
     from {
@@ -147,6 +213,18 @@ footer ul {
     }
     }
 
+    @keyframes paperAttack {
+        0% {
+            transform: translatey(140px);
+        }
+        50% {
+            transform: translatey(280px);
+        }
+        100% {
+            transform: translatey(140px);
+        }
+        }
+
 @keyframes scissors {
     0% {
         transform: translate(0,0)
@@ -156,6 +234,21 @@ footer ul {
         transform: translate(-160px, 140px);
    }
 }
+    @keyframes scissorsAttack {
+        0% {
+            transform: translate(-160px, 140px);
+        }
+
+        50% {
+            transform: translate(-160px, 280px);
+        }
+        100% {
+            transform: translate(-160px, 140px);
+        }
+    }   
+
+
+
 
 @keyframes computerRock {
     0% {
@@ -165,6 +258,18 @@ footer ul {
         transform: translate(160px, -140px);
    }
 }
+@keyframes computerRockAttack {
+    0% {
+        transform: translate(160px, -140px);
+      }
+    50% {
+        transform: translate(160px, -280px);
+   }
+    100% {
+        transform: translate(160px, -140px);
+    }
+}
+
 
 @keyframes computerPaper {
     from {
@@ -174,6 +279,17 @@ footer ul {
         transform: translatey(-140px);
     }
     }
+    @keyframes computerPaperAttack {
+        0% {
+            transform: translatey(-140px);
+            }
+        50% {
+            transform: translatey(-280px);
+        }
+        100% {
+            transform: translatey(-140px);
+            }
+        }
 
 @keyframes computerScissors {
     0% {
@@ -183,3 +299,22 @@ footer ul {
         transform: translate(-160px, -140px);
    }
 }
+    @keyframes computerScissorsAttack {
+        0% {
+            transform: translate(-160px, -140px);
+        }
+
+        50% {
+            transform: translate(-160px, -280px);
+    }
+    100% {
+        transform: translate(-160px, -140px);
+    }
+}   
+
+
+
+
+
+
+
