@@ -22,28 +22,74 @@ let winCounter = 0
 let drawCounter = 0
 let lossCounter = 0
 
+let cash = 1000
+let cost = 20
+let cashElement = document.querySelector("#cashEl")
+const resetCost = document.querySelector("#resetCost")
+const times2 = document.querySelector("#times2")
+const times3 = document.querySelector("#times3")
+const times5 = document.querySelector("#times5")
+const times10 = document.querySelector("#times10")
+const currentCost = document.querySelector("#currentCost")
+currentCost.innerHTML = cost
+
 function getHistory() {
     if (localStorage.getItem("Wins") !== null) {
 
-        totalCounter = localStorage.getItem("Total");
-        winCounter = localStorage.getItem("Wins");
-        drawCounter = localStorage.getItem("Draws");
-        lossCounter = localStorage.getItem("Losses");
+        let totalCounterStorage = localStorage.getItem("Total");
+        let winCounterStorage = localStorage.getItem("Wins");
+        let drawCounterStorage = localStorage.getItem("Draws");
+        let lossCounterStorage = localStorage.getItem("Losses");
+        let cashStorage = localStorage.getItem("Cash")
 
-        console.log(lossCounter)
+        totalCounter = JSON.parse(totalCounterStorage)
+        winCounter = JSON.parse(winCounterStorage)
+        drawCounter = JSON.parse(drawCounterStorage)
+        lossCounter = JSON.parse(lossCounterStorage)
+        cash = JSON.parse(cashStorage)
 
         totalCounterEl.innerHTML = totalCounter
         winCounterEl.innerHTML = winCounter
         drawCounterEl.innerHTML = drawCounter
         lossCounterEl.innerHTML = lossCounter
+        cashElement.innerHTML = cash
+
+
     }
 }
 
 getHistory()
 
+resetCost.addEventListener("click", () => {
+    cost = 20
+    currentCost.innerHTML = cost
+})
+
+times2.addEventListener("click", () => {
+    cost = cost * 2
+    currentCost.innerHTML = cost
+})
+
+times3.addEventListener("click", () => {
+    cost = cost * 3
+    currentCost.innerHTML = cost
+})
+
+times5.addEventListener("click", () => {
+    cost = cost * 5
+    currentCost.innerHTML = cost
+})
+
+times10.addEventListener("click", () => {
+    cost = cost * 10
+    currentCost.innerHTML = cost
+})
+
+
+
 rockButton.addEventListener("click", selectRock)
 function selectRock() {
-    if (played === false) {
+    if (played === false && (cash - cost) > 0) {
 
     rockButton.setAttribute('class', 'rock')
     setTimeout ( () => {rockButton.classList.add("rockAttack")}, 2000)
@@ -54,7 +100,7 @@ function selectRock() {
 
 paperButton.addEventListener("click", selectPaper)
 function selectPaper() {
-    if (played === false) {
+    if (played === false && (cash - cost) > 0) {
     paperButton.setAttribute('class', 'paper')
     setTimeout ( () => {paperButton.classList.add("paperAttack")}, 2000)
     yourChoice = "paper"
@@ -66,7 +112,7 @@ function selectPaper() {
 
 scissorsButton.addEventListener("click", selectScissors)
 function selectScissors() {
-    if (played === false) {
+    if (played === false && (cash - cost) > 0) {
     scissorsButton.setAttribute('class', 'scissors')
     setTimeout ( () => {scissorsButton.classList.add("scissorsAttack")}, 2000)
     yourChoice = "scissors"
@@ -104,13 +150,13 @@ function computerChoose() {
                 (computerChoice === "scissors" && yourChoice === "rock")) {
                 computerChoiceArea.appendChild(fireImage)
                 winCounter += 1
-                
+                cash = cash + cost
 
             } else {
                 // if loss, add fireImage to yourChoiceArea if loss
                 yourChoiceArea.appendChild(fireImage)
                 lossCounter += 1
-
+                cash = cash - cost
 
             }
             totalCounter = winCounter - lossCounter
@@ -118,10 +164,14 @@ function computerChoose() {
             winCounterEl.innerHTML = winCounter
             drawCounterEl.innerHTML = drawCounter
             lossCounterEl.innerHTML = lossCounter
+            cashElement.innerHTML = cash
             localStorage.setItem("Total", totalCounter );
             localStorage.setItem("Wins", winCounter );
             localStorage.setItem("Draws", drawCounter );
             localStorage.setItem("Losses", lossCounter );
+            localStorage.setItem("Cash", cash)
+            cost = 20
+            currentCost.innerHTML = cost
 
 
 
@@ -144,3 +194,10 @@ function computerChoose() {
         
     
 }
+
+const clearHistoryButton = document.querySelector("#clearHistory")
+
+clearHistoryButton.addEventListener("click", () => {
+    localStorage.clear()
+    location.reload()
+})
