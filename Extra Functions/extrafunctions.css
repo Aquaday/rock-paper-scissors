@@ -31,7 +31,7 @@ h2 {
     align-items: center;
     flex-direction: column;
     margin: 0% 20%;
-    height: 80vh;
+    min-height: 80vh;
 }
 
 .gameDiv {
@@ -195,7 +195,7 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 15vh;
+    min-height: 15vh;
 }
 
 footer a {
