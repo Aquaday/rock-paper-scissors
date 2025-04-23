@@ -2,75 +2,62 @@ const rockButton = document.querySelector("#rock")
 const paperButton = document.querySelector("#paper")
 const scissorsButton = document.querySelector("#scissors")
 const computerChoiceElement = document.querySelector("#computerChoice")
-const displayResults = document.querySelector("#results")
 const choices = ["rock", "paper", "scissors"]
 let yourChoice = ""
 let played = false
+let selected = false
 
 
 rockButton.addEventListener("click", selectRock)
+
 function selectRock() {
-    if (played === true) {
-        paperButton.setAttribute('class', 'paperStyle')
-        scissorsButton.setAttribute('class', 'scissorsStyle')
+    if (selected === false) {
+        if (played === true) {
+        rockButton.setAttribute('class', '')
+        paperButton.setAttribute('class', '')
+        scissorsButton.setAttribute('class', '')
     } 
-    rockButton.classList.add("activeButton")
+    rockButton.setAttribute('class', 'rock')
     yourChoice = "rock"
-    computerChoose()
-    
+    selected = true
+}
 }
 
 paperButton.addEventListener("click", selectPaper)
 function selectPaper() {
-    if (played === true) {
-        rockButton.setAttribute('class', 'rockStyle')
-        scissorsButton.setAttribute('class', 'scissorsStyle')
+    if (selected === false) {
+        if (played === true) {
+        rockButton.setAttribute('class', '')
+        paperButton.setAttribute('class', '')
+        scissorsButton.setAttribute('class', '')
     } 
-    paperButton.classList.add("activeButton")
+    paperButton.setAttribute('class', 'paper')
     yourChoice = "paper"
-    computerChoose()
+    selected = true
+}
 }
 
 
 
 scissorsButton.addEventListener("click", selectScissors)
 function selectScissors() {
+    if (selected === false) {
     if (played === true) {
-        paperButton.setAttribute('class', 'paperStyle')
-        rockButton.setAttribute('class', 'rockStyle')
+        rockButton.setAttribute('class', '')
+        paperButton.setAttribute('class', '')
+        scissorsButton.setAttribute('class', '')
     } 
-    scissorsButton.classList.add("activeButton")
+    scissorsButton.setAttribute('class', 'scissors')
     yourChoice = "scissors"
-    computerChoose()
+    selected = true
 }
-
-// paperButton.addEventListener("click", selectPaper)
-// function selectPaper() {
-//     let checkActive = document.querySelector(".activeButton")
-//     if (checkActive.classList.contains(activeButton) === true){
-//         checkActive.classList.remove(activeButton)
-//     }else {
-//     paperButton.classList.add("activeButton")
-//     yourChoice = "paper"
-//     computerChoose()
-// }
-    
-// }
-
-// scissorsButton.addEventListener("click", selectScissors)
-// function selectScissors() {
-//     scissorsButton.classList.add("activeButton")
-//     yourChoice = "scissors"
-//     computerChoose()
-// }
+}
 
 function computerChoose() { 
     computerChoiceElement.innerHTML = ""
-    displayResults.innerHTML = ""
     let computerChoice = choices[Math.floor(Math.random() * 3)]
 
     if (played === true) {
-        displayResults.setAttribute("class", "")
         computerChoiceElement.setAttribute("class", "")
         } 
     setTimeout( () => {
@@ -89,18 +76,17 @@ function computerChoose() {
 
         setTimeout( () => {
             if (computerChoice === yourChoice) {
-            displayResults.innerHTML = "Its a draw!"
-            displayResults.classList.add("draw")
+
+                
         } else if (
             (computerChoice === "rock" && yourChoice === "paper") || 
             (computerChoice === "paper" && yourChoice === "scissors") || 
             (computerChoice === "scissors" && yourChoice === "rock")) {
-            displayResults.innerHTML = "You win!"
-            displayResults.classList.add("won")
         } else {
-            displayResults.innerHTML = "You lose!"
-            displayResults.classList.add("lose")
+
+
         }}, 2000)
     
     played = true
+    selected = false
 }
