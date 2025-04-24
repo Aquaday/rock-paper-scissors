@@ -171,7 +171,8 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 15vh;
+    min-height: 15vh;
+    margin-top: 20px;
 }
 
 footer a {
