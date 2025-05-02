@@ -30,6 +30,7 @@ const times2 = document.querySelector("#times2")
 const times3 = document.querySelector("#times3")
 const times5 = document.querySelector("#times5")
 const times10 = document.querySelector("#times10")
+const allIn = document.querySelector("#allIn")
 const currentCost = document.querySelector("#currentCost")
 currentCost.innerHTML = cost
 
@@ -85,11 +86,14 @@ times10.addEventListener("click", () => {
     currentCost.innerHTML = cost
 })
 
-
+allIn.addEventListener("click", () => {
+    cost = cash
+    currentCost.innerHTML = cost
+})
 
 rockButton.addEventListener("click", selectRock)
 function selectRock() {
-    if (played === false && (cash - cost) > 0) {
+    if (played === false && (cash - cost) >= 0) {
 
     rockButton.setAttribute('class', 'rock')
     setTimeout ( () => {rockButton.classList.add("rockAttack")}, 2000)
@@ -100,7 +104,7 @@ function selectRock() {
 
 paperButton.addEventListener("click", selectPaper)
 function selectPaper() {
-    if (played === false && (cash - cost) > 0) {
+    if (played === false && (cash - cost) >= 0) {
     paperButton.setAttribute('class', 'paper')
     setTimeout ( () => {paperButton.classList.add("paperAttack")}, 2000)
     yourChoice = "paper"
@@ -112,7 +116,7 @@ function selectPaper() {
 
 scissorsButton.addEventListener("click", selectScissors)
 function selectScissors() {
-    if (played === false && (cash - cost) > 0) {
+    if (played === false && (cash - cost) >= 0) {
     scissorsButton.setAttribute('class', 'scissors')
     setTimeout ( () => {scissorsButton.classList.add("scissorsAttack")}, 2000)
     yourChoice = "scissors"
@@ -170,8 +174,7 @@ function computerChoose() {
             localStorage.setItem("Draws", drawCounter );
             localStorage.setItem("Losses", lossCounter );
             localStorage.setItem("Cash", cash)
-            cost = 20
-            currentCost.innerHTML = cost
+
 
 
 
