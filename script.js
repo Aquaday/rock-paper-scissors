@@ -25,7 +25,10 @@ function computerChoose() {
     }
 
 
+}
+
 rockButton.addEventListener("click", selectRock)
+
 function selectRock() {
     yourChoice = "rock"
     computerChoose()
@@ -41,30 +44,4 @@ scissorsButton.addEventListener("click", selectScissors)
 function selectScissors() {
     yourChoice = "scissors"
     computerChoose()
-}
-
-
-
-
-    // if (computerChoice === yourChoice) {
-    //     displayResults.innerHTML = "Its a draw!"
-    // } else if (computerChoice === "rock") {
-    //     if (yourChoice === "paper") {
-    //         displayResults.innerHTML = "You win!"
-    //     } else {
-    //         displayResults.innerHTML = "You lose!"
-    //     }
-    // } else if (computerChoice === "paper") {
-    //     if (yourChoice === "rock") {
-    //         displayResults.innerHTML = "You lose!"
-    //     } else {
-    //         displayResults.innerHTML = "You win!"
-    //     }
-    // } else {
-    //     if (yourChoice === "paper") {
-    //         displayResults.innerHTML = "You lose!"
-    //     } else {
-    //         displayResults.innerHTML = "You win!"
-    //     }
-    // } 
 }
